@@ -36,6 +36,8 @@ def readtoMatrix(filename):
 
     votes = []
 
+    num_alternatives = 0
+
     num_votes = 0
 
     with open(filename) as file:
@@ -56,7 +58,7 @@ def readtoMatrix(filename):
             votes.append((num_occurances, nums))
             num_votes += num_occurances
 
-    return num_votes, votes
+    return num_votes, num_alternatives, votes
 
 
 def soiInputwithWeights(filename):
