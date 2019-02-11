@@ -1,3 +1,6 @@
 *checkpoint.ipynb
 src/__pycache__/*
 *.pyc
+src/data/models/VGAN/MNIST/
+src/runs/
+diagrams/graph_views/

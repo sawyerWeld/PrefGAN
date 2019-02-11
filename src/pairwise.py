@@ -56,15 +56,14 @@ def pairwise_matrix_singular(vote):
     for i, v in enumerate(vote):
         if v == 0:
             continue
-        possibilities = [i+1 for i in range(n)]
+        # list of alts that the current alt is better than
+        better_than = [i+1 for i in range(n)]
         before = vote[:i+1]
         for b in before:
-            possibilities.remove(b)
-        for p in possibilities:
+            better_than.remove(b)
+        for p in better_than:
             occurance_matrix[v-1][p-1] = 1
-
-
-
+            occurance_matrix[p-1][v-1] = -1
     return occurance_matrix
 
 # Converts an upper triangular matrix to a vector
@@ -93,7 +92,9 @@ def vec_to_matrix(vec_):
 
 
 def process_vote(vote):
-    return pairwise_matrix_singular(vote)
+    mat = pairwise_matrix_singular(vote)
+    # print(mat)
+    return matrix_to_vec(mat)
 
 # deprecated?
 # This is what should be used from preference loader
@@ -107,12 +108,13 @@ if __name__ == '__main__':
     print('Executing main thread in pairwise.py')
     np.set_printoptions(precision=3)
     candidates, votes = pref.readinSOIwfreqs('data_in/Practice/ED-02-Logo.soi')
-    a = np.array([8, 4, 0, 0, 0, 0, 0, 0])
-    vec = pairwise_matrix_singular(a)
+    a = np.array([2, 0, 0, 0, 0, 0, 0, 0])
+    vec = process_vote(a)
     print(vec)
+    print('mat now')
     #print(matrix_to_vec(vec))
     # prob = pairwise_from_votes(votes[0], len(candidates))
     # print(prob)
     # vec = matrix_to_vec(prob)
     # print(vec)
-    # print(vec_to_matrix(vec))
+    print(vec_to_matrix(vec))

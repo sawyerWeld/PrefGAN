@@ -3,9 +3,14 @@ preference_loader.py
 
 Used this article as a reference
 https://stanford.edu/~shervine/blog/pytorch-how-to-generate-data-parallel
+
+
+Also used an answer by Shani_Gamrian on the pytorch forums here
+https://discuss.pytorch.org/t/typeerror-batch-must-contain-tensors-numbers-dicts-or-lists-found-object/14665/3
 '''
 import torch
 from torch.utils import data
+from torchvision import transforms
 import readPreflib
 import numpy as np
 import pairwise
@@ -30,8 +35,9 @@ class Dataset(data.Dataset):
         L_Pairwise = []
         for i in L:
             mat = pairwise.process_vote(i)
-            L_Pairwise.append(torch.tensor(mat, dtype=torch.uint8))
+            L_Pairwise.append(torch.tensor(mat, dtype=torch.float))
         self.pairs = L_Pairwise
+        
     
     def __len__(self):
         # One feature
@@ -39,5 +45,6 @@ class Dataset(data.Dataset):
 
     def __getitem__(self, index):
         # Generates one sample of data
-        vote = self.pairs[index]
+        vec = self.pairs[index]
+        return vec
         
