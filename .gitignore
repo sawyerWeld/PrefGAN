@@ -4,3 +4,4 @@ src/__pycache__/*
 src/data/models/VGAN/MNIST/
 src/runs/
 diagrams/graph_views/
+*.sh
