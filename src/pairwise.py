@@ -7,6 +7,8 @@ import readPreflib as pref
 import numpy as np
 import math
 
+
+
 # Acts on a set of SOI vote tuples
 def pairwise_from_votes(votes, num_candidates):
     n = num_candidates
