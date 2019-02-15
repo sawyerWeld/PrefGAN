@@ -8,7 +8,7 @@ def vec_to_graph(vec, name='no_name_graph', save=False, fromTorch=True):
     if fromTorch:
         matrix = pairwise.vec_to_matrix(vec.numpy())
     else:
-         matrix = pairwise.vec_to_matrix(vec)
+        matrix = pairwise.vec_to_matrix(vec)
     n_cands = len(matrix[0])
     dot = Digraph(comment='Preference Graph',format='png')
     # init nodes
