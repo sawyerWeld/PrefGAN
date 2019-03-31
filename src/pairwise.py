@@ -92,7 +92,7 @@ def vec_to_matrix(vec_):
         row_offset += 1
     return prob_matrix
 
-
+# Note as I write thesis: this is the one that gets used
 def process_vote(vote):
     mat = pairwise_matrix_singular(vote)
     # print(mat)
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     print('Executing main thread in pairwise.py')
     np.set_printoptions(precision=3)
     candidates, votes = pref.readinSOIwfreqs('data_in/Practice/ED-02-Logo.soi')
-    a = np.array([2, 0, 0, 0, 0, 0, 0, 0])
+    a = np.array([3, 2, 1, 0, 0, 0])
     vec = process_vote(a)
     print(vec)
     print('mat now')
@@ -120,3 +120,4 @@ if __name__ == '__main__':
     # vec = matrix_to_vec(prob)
     # print(vec)
     print(vec_to_matrix(vec))
+    print(process_vote(a))
