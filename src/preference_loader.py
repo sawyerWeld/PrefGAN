@@ -1,5 +1,8 @@
-''' 
-preference_loader.py
+#preference_loader.py
+
+'''
+PyTorch uses a dataloader class and a dataset class to read in data
+This file extends those for use with preferences
 
 Used this article as a reference
 https://stanford.edu/~shervine/blog/pytorch-how-to-generate-data-parallel
